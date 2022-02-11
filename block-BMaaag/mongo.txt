@@ -1,0 +1,40 @@
+> use mountains
+switched to db mountains
+> createCollection(`himalayas`)
+uncaught exception: ReferenceError: createCollection is not defined :
+@(shell):1:1
+> db.createCollection(`himalayas`)
+{ "ok" : 1 }
+> var data1={name: 'Dhauldhar range', height: '4000 mtrs'}
+> data1
+{ "name" : "Dhauldhar range", "height" : "4000 mtrs" }
+> db.himalayas.insert(data1)
+WriteResult({ "nInserted" : 1 })
+> db.himalayas.find()
+{ "_id" : ObjectId("62061a56f6d85d491d92d073"), "name" : "Dhauldhar range", "height" : "4000 mtrs" }
+> data2={name: 'Himalaya range', height: '4000 mtrs'}
+{ "name" : "Himalaya range", "height" : "4000 mtrs" }
+> data3={name: 'Aravali range', height: '8000 mtrs'}
+{ "name" : "Aravali range", "height" : "8000 mtrs" }
+> db.himalayas.insertMany(data1,data2,data3)
+uncaught exception: TypeError: documents.map is not a function :
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:307:17
+@(shell):1:1
+> db.himalayas.insertMany([data1,data2,data3])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("62061ad6f6d85d491d92d074"),
+                ObjectId("62061ad6f6d85d491d92d075"),
+                ObjectId("62061ad6f6d85d491d92d076")
+        ]
+}
+> db.mountains.fimd
+mountains.mountains.fimd
+> db.mountains.find()
+> db.himalayas.findOne({name:`Dhauldhar range`})
+{
+        "_id" : ObjectId("62061a56f6d85d491d92d073"),
+        "name" : "Dhauldhar range",
+        "height
+}
